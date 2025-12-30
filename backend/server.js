@@ -1,53 +1,46 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import bodyParser from "body-parser";
 import connectDB from "./config/db.js";
+import cookieParser from "cookie-parser";
+import errorHandler from "./middlewares/errorHandler.js";
+import blogRoutes from "./routes/blogRoutes.js";
 dotenv.config();
 
 const app = express();
+
 connectDB();
 
-app.use(cors());
-app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 5000;
+
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());    
+
+app.use("/api", blogRoutes);
+
+
 
 app.get("/", (req,res)=>{
-    res.json(
+    res.status(200).json(
         {
             message: "simar server is running successfull",
             timestamp: new Date().toDateString()
         }
     )
-    res.status(201);
 })
+
+
 
 app.get("/home", (req,res)=>{
-    res.send("API is running... on the HOME PAGE");
-    res.status(200);
+   res.status(200).send("welcome to home page")
 })
 
-app.get("/api/blogs", (req,res)=>{
-    const blogs_message_json = [
-        {
-            status: "success",
-            message: "Blogs Fetched Successfully",
-            timestamp: new Date().toDateString()
-        },
-        {
-            status: "success",
-            message: "backend server is running.....",
-            timestamp: new Date().toDateString()
-        },
-        {
-            status: "success",
-            message: "blog server is running fine",
-            timestamp: new Date().toDateString()
-        }
-    ]
-    res.status(202).json(blogs_message_json);
-})
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, ()=>{
     console.log(`server is running on PORT : ${PORT}`);
