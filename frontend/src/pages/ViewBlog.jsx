@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import FullBlogCard from "../components/FullBlogCard";
 
+
 function ViewBlog(){
+ 
   const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true);
    const [error, setError] = useState("");

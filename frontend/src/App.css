@@ -239,6 +239,68 @@ button {
   opacity: 0.9;
   pointer-events: none; /* 🔥 NOT clickable */
 }
+/* ===============================
+   VIEW BLOG PAGE
+   =============================== */
+
+.view-page {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.view-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.view-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.view-stats {
+  display: flex;
+  gap: 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 25px;
+}
+
+.view-content {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #1f2937;
+  white-space: pre-wrap;
+  margin-bottom: 40px;
+}
+
+.view-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.view-actions button {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #4f46e5;
+  color: white;
+}
+
+.view-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 
 
 
