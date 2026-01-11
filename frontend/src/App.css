@@ -156,3 +156,95 @@ button {
     font-size: 2rem;
   }
 }
+.navbar {
+  background: #4f46e5;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.edit-btn {
+  margin-left: auto;
+  background: white;
+  color: #4f46e5;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: none;
+}
+
+/* No hover effect */
+.edit-btn:hover {
+  background: white;
+  color: white;
+  text-decoration: none;
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 24px;
+  background: #4f46e5;
+}
+
+/* Normal nav links */
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* No hover animation */
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== EDIT SECTION ===== */
+.edit-wrapper {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Edit link (NO hover effect) */
+.edit-link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Disable hover animation completely */
+.edit-link:hover {
+  text-decoration: none;
+  background: none;
+  transform: none;
+}
+
+/* Professional hint text */
+.edit-hint {
+  margin-top: 4px;
+  font-size: 17px;
+  color: #e0e7ff;
+  opacity: 0.9;
+  pointer-events: none; /* 🔥 NOT clickable */
+}
+
+
+
+
+
+
+
+
+

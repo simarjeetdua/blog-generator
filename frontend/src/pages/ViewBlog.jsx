@@ -1,39 +1,55 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import FullBlogCard from "../components/FullBlogCard";
 
-function ViewBlog() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [blog, setBlog] = useState(null);
+function ViewBlog(){
+  const [blog, setBlog] = useState([]);
+  const [loading, setLoading] = useState(true);
+   const [error, setError] = useState("");
+   
+  useEffect(()=>{
+    const fetchBlog = async()=>{
+      try {
+        const response = await axios.get("/api/blogs");
+        setBlog(response.data);
+      } catch (error) {
+        console.error("error fetching blog: ", error);
+        alert("failed to fetch blogs");
+      }
+      finally{
+        setLoading(false);
+      }
+    };
+    fetchBlog();
+  },[]);
 
-  useEffect(() => {
-    axios.get(`/api/blogs/${id}`)
-    .then(res => setBlog(res.data));
-  }, [id]);
 
-  if (!blog) return <p className="loader">Loading...</p>;
+    if (loading) {
+    return <p className="loader">Loading blogs...</p>;
+  }
+   if (error) {
+    return <p className="hint">{error}</p>;
+  }
+  if (!blog) return <p className="hint">Blog not found</p>;
 
-  return (
-    <div className="container">
-      <h1>{blog.title}</h1>
+ return (
+    <div className="app">
+      <header className="header">
+        <h1>📚 All Blogs</h1>
+        <p>Read all published blogs</p>
+      </header>
 
-      {blog.image && (
-        <img
-          src={`http://localhost:5000${blog.image}`}
-          alt={blog.title}
-          className="view-image"
-        />
-      )}
+      <div className="container">
+        <div className="blog-grid">
+          {blog.map((blog, index) => (
+            <FullBlogCard key={blog._id || index} blog={blog} />
+          ))}
+        </div>
 
-      <p>{blog.content}</p>
-
-      <button
-        type="button"
-        onClick={() => navigate(`/edit/${blog._id}`)}
-      >
-        Edit Blog
-      </button>
+        {blog.length === 0 && (
+          <p className="hint">No blogs available</p>
+        )}
+      </div>
     </div>
   );
 }
