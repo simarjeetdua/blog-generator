@@ -24,6 +24,9 @@ function Navbar() {
                     </p>
                 </div>
             )}
+            <Link to="/published" style={{ color: "white" }}>
+            Published Blogs
+            </Link>
         </nav>
     )
 }

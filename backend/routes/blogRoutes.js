@@ -9,7 +9,7 @@ const router = express.Router();
    ========================= */
 router.post("/blogs", async (req, res) => {
   try {
-    const { title, content, author } = req.body;
+    const { title, content, author, isPublished } = req.body;
 
     if (!title || !content) {
       return res.status(400).json({
@@ -20,8 +20,8 @@ router.post("/blogs", async (req, res) => {
     const blog = await Blog.create({
       title,
       content,
-      author,
-      isPublished: false,
+      author: author?.trim() || "Anonymous",
+      isPublished: Boolean(isPublished),
     });
 
     res.status(201).json(blog);

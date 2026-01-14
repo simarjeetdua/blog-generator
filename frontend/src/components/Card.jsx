@@ -1,7 +1,23 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Card = ({ blog }) => {
-  if (!blog?._id) return null;
+const Card = ({ blog, onDelete }) => {
+  const handleDelete = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this blog?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await axios.delete(`/api/blogs/${blog._id}`);
+      alert("Blog deleted successfully");
+      if (onDelete) onDelete(blog._id);
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+      alert("Failed to delete blog");
+    }
+  };
 
   return (
     <div className="blog-card">
@@ -22,11 +38,20 @@ const Card = ({ blog }) => {
         </p>
 
         <div className="meta">
-          <span>✍ {blog.author || "Anonymous"}</span>
+          <span>✍ Written by {blog.author || "Guest"}</span>
           <span>
             📅 {new Date(blog.createdAt).toLocaleDateString()}
           </span>
         </div>
+
+        {/* DELETE BUTTON */}
+        {onDelete && (
+          <div className="card-actions">
+            <button className="delete-btn" onClick={handleDelete}>
+              🗑 Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ const blogSchema =  new mongoose.Schema({
     author:{
         type: String,
         default: "Anonymous",
+        trim: true,
     },
     imageUrl:{
         type: String,

@@ -21,8 +21,15 @@ function Home() {
       alert("Failed to load blogs");
     } finally {
       setLoading(false);
-    }
+    } 
   };
+  const handleDeleteBlog = async (id) => {
+    setBlogs((prevBlogs)=> 
+    prevBlogs.filter((blog)=> blog._id !==id)
+  );
+  setCount((prevCount)=> prevCount -1);
+  };
+  
 
   return (
     <div className="app">
@@ -49,9 +56,13 @@ function Home() {
         )}
 
         {/* Blog List */}
-        <div className="blog-grid">
-          {blogs.map((blog, index) => (
-            <Card key={blog._id || index} blog={blog} />
+       <div className="blog-grid">
+          {blogs.map((blog) => (
+            <Card
+              key={blog._id}
+              blog={blog}
+              onDelete={handleDeleteBlog}   
+            />
           ))}
         </div>
 

@@ -300,6 +300,498 @@ button {
   opacity: 0.6;
   cursor: not-allowed;
 }
+/* ===============================
+   GLOBAL RESET & THEME
+   =============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  color: #111827;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Smooth animations everywhere */
+* {
+  transition: all 0.25s ease;
+}
+
+/* ===============================
+   NAVBAR
+   =============================== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Edit button – NO hover animation */
+nav a:last-child {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+nav a:last-child:hover::after {
+  width: 0;
+}
+
+/* ===============================
+   PAGE LAYOUT
+   =============================== */
+
+.app {
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px;
+  animation: fadeUp 0.6s ease;
+}
+
+/* ===============================
+   HEADERS
+   =============================== */
+
+.header {
+  text-align: center;
+  padding: 60px 20px 35px;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.header p {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* ===============================
+   ACTION BAR
+   =============================== */
+
+.actions {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.actions span {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* ===============================
+   BUTTONS
+   =============================== */
+
+button {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===============================
+   BLOG GRID & CARDS
+   =============================== */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 0.5s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 20px 22px;
+}
+
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.blog-title:hover {
+  color: #4f46e5;
+}
+
+.excerpt {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* ===============================
+   CREATE / EDIT FORM
+   =============================== */
+
+.form,
+.edit-form {
+  max-width: 760px;
+  margin: 50px auto;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 36px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12);
+  animation: fadeUp 0.6s ease;
+}
+
+.form input,
+.form textarea,
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 15px;
+  color: #111827;
+}
+
+.form textarea,
+.edit-form textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus,
+.edit-form input:focus,
+.edit-form textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* ===============================
+   EDIT PAGE / PUBLISH BAR
+   =============================== */
+
+.edit-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+.edit-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.publish-bar {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.live {
+  color: #16a34a;
+}
+
+.status.draft {
+  color: #ca8a04;
+}
+
+/* ===============================
+   VIEW / SINGLE BLOG
+   =============================== */
+
+.view-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 25px 0;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4f46e5;
+  padding: 50px;
+}
+
+/* ===============================
+   EMPTY STATES
+   =============================== */
+
+.hint {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 40px 0;
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .form,
+  .edit-form {
+    padding: 26px;
+  }
+}
+/* ===============================
+   PUBLISH BAR — CHECKBOX ON LEFT
+   =============================== */
+
+.publish-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;                 /* spacing between checkbox & text */
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
+/* Move everything to LEFT */
+.publish-bar {
+  justify-content: flex-start;
+}
+
+/* ===============================
+   STATUS TEXT (RIGHT OF CHECKBOX)
+   =============================== */
+
+.publish-bar .status {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.status.live {
+  color: #15803d; /* dark green */
+}
+
+.status.draft {
+  color: #92400e; /* dark amber */
+}
+
+/* ===============================
+   PROFESSIONAL CHECKBOX TOGGLE
+   =============================== */
+
+.publish-toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;            /* prevents shrinking */
+}
+
+/* Hide default checkbox */
+.publish-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Toggle track */
+.toggle-ui {
+  position: absolute;
+  inset: 0;
+  background: #cbd5e1;       /* visible gray */
+  border-radius: 999px;
+  border: 2px solid #94a3b8;
+}
+
+/* Toggle knob */
+.toggle-ui::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 4px;
+  top: 4px;
+  background: #1e293b;       /* dark knob */
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* ON state */
+.publish-toggle input:checked + .toggle-ui {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  border-color: #166534;
+}
+
+.publish-toggle input:checked + .toggle-ui::before {
+  transform: translateX(20px);
+  background: #052e16;
+}
+/* ===== FIX INPUT TYPING ISSUE ===== */
+.edit-form input,
+.edit-form textarea {
+  pointer-events: auto !important;
+  user-select: text !important;
+  color: #111827 !important;
+  background: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Remove any hover/focus blockers */
+.edit-form input:hover,
+.edit-form textarea:hover,
+.edit-form input:focus,
+.edit-form textarea:focus {
+  box-shadow: none;
+  transform: none;
+  outline: none;
+}
+
+/* Cursor fix */
+.edit-form input {
+  cursor: text;
+}
+.edit-form input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  background: #ffffff;
+}
+
+.edit-form input::placeholder {
+  color: #9ca3af;
+}
 
 
 
