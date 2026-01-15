@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import FullBlogCard from "../components/FullBlogCard";
+import api from "../api";
 
 
 function ViewBlog(){
@@ -12,7 +13,7 @@ function ViewBlog(){
   useEffect(()=>{
     const fetchBlog = async()=>{
       try {
-        const response = await axios.get("/api/blogs");
+        const response = await api.get("/api/blogs");
         setBlog(response.data);
       } catch (error) {
         console.error("error fetching blog: ", error);

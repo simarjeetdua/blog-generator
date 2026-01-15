@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api";
 
 function EditBlog() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ function EditBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`/api/blogs/${id}`);
+        const response = await api.get(`/api/blogs/${id}`);
         setTitle(response.data.title);
         setAuthor(response.data.author || "");
         setContent(response.data.content);
@@ -38,7 +39,7 @@ function EditBlog() {
     e.preventDefault();
 
     try {
-      await axios.put(`/api/blogs/${id}`, {
+      await api.put(`/api/blogs/${id}`, {
         title,
         content,
         author: author.trim() || "Anonymous",
@@ -54,7 +55,7 @@ function EditBlog() {
   const togglePublish = async () => {
       try {
         setPublishing(true);
-        const res = await axios.patch(`/api/blogs/${id}/publish`);
+        const res = await api.patch(`/api/blogs/${id}/publish`);
         setisPublished(res.data.blog.isPublished);
         alert(res.data.blog.isPublished ? "Blog published!" : "Blog unpublished!");
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Card from "../components/Card";
+import api from "../api";
 
 function PublishedBlogs() {
   const [blogs, setBlogs] = useState([]);
@@ -10,7 +11,7 @@ function PublishedBlogs() {
   useEffect(() => {
     const fetchPublishedBlogs = async () => {
       try {
-        const response = await axios.get("/api/blogs/published");
+        const response = await api.get("/api/blogs/published");
         setBlogs(response.data);
       } catch (err) {
         console.error(err);

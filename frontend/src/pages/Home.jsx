@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api";
 import Card from "../components/Card";
 import "../App.css";
 
@@ -12,7 +13,7 @@ function Home() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("/api/blogs");
+      const response = await api.get("/api/blogs");
       setBlogs(response.data);
       setCount(response.data.length);
       setLoaded(true);

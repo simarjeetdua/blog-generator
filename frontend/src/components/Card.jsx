@@ -1,5 +1,6 @@
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../api";
 
 const Card = ({ blog, onDelete }) => {
   const handleDelete = async () => {
@@ -10,7 +11,7 @@ const Card = ({ blog, onDelete }) => {
     if (!confirmed) return;
 
     try {
-      await axios.delete(`/api/blogs/${blog._id}`);
+      await api.delete(`/api/blogs/${blog._id}`);
       alert("Blog deleted successfully");
       if (onDelete) onDelete(blog._id);
     } catch (error) {

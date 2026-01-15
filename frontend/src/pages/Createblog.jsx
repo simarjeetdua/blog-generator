@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api";
 
 const Createblog = () => {
   const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ const Createblog = () => {
     try {
       setLoading(true);
 
-      await axios.post("/api/blogs", {
+      await api.post("/api/blogs", {
         title,
         content,
         author,

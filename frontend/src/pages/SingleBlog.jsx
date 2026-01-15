@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../api";
 
 function SingleBlog() {
   const { id } = useParams();
@@ -12,7 +13,7 @@ function SingleBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`/api/blogs/${id}`);
+        const response = await api.get(`/api/blogs/${id}`);
         setBlog(response.data);
       } catch (error) {
         alert("Failed to load blog");
@@ -26,7 +27,7 @@ function SingleBlog() {
   const handleLike = async () => {
     try {
       setLiking(true);
-      const response = await axios.patch(`/api/blogs/${id}/like`);
+      const response = await api.patch(`/api/blogs/${id}/like`);
       setBlog(response.data);
     } catch (error) {
       alert("Failed to like blog");
